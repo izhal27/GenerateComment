@@ -1,0 +1,16 @@
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\bin\Debug\GenerateCommentAboutAuthor.exe
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\bin\Debug\GenerateCommentAboutAuthor.pdb
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.csprojResolveAssemblyReference.cache
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.Form1.resources
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.Properties.Resources.resources
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.csproj.GenerateResource.Cache
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.exe
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.pdb
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.csprojResolveAssemblyReference.cache
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.Properties.Resources.resources
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.csproj.GenerateResource.Cache
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\bin\Debug\GenerateComment.exe
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\bin\Debug\GenerateComment.pdb
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.mainForm.resources
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateComment.exe
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateComment.pdb

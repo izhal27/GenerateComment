@@ -1,0 +1,22 @@
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\bin\Release\GenerateCommentAboutAuthor.exe
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\bin\Release\GenerateCommentAboutAuthor.pdb
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.Form1.resources
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.Properties.Resources.resources
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.csproj.GenerateResource.Cache
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.exe
+C:\Users\IzHaL\AppData\Local\Temporary Projects\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.pdb
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\bin\Release\GenerateComment.exe
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\bin\Release\GenerateComment.pdb
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.mainForm.resources
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateComment.Properties.Resources.resources
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.csproj.GenerateResource.Cache
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateComment.exe
+D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateComment.pdb
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateComment.exe
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateComment.pdb
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\bin\Release\GenerateComment.exe
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\bin\Release\GenerateComment.pdb
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.csprojResolveAssemblyReference.cache
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.mainForm.resources
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateComment.Properties.Resources.resources
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.csproj.GenerateResource.Cache
