@@ -107,7 +107,7 @@ namespace GenerateCommentAboutAuthor
 
       private void tentangToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         MessageBox.Show("Generate Comment Author\nBy: Risal Walangadi ©2015",
+         MessageBox.Show("Generate Comment Author\nBy: Risal Walangadi ©2015 - " + DateTime.Now.Year,
             "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
 
