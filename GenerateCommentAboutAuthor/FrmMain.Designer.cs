@@ -1,6 +1,6 @@
 ﻿namespace GenerateCommentAboutAuthor
 {
-   partial class mainForm
+   partial class FrmMain
    {
       /// <summary>
       /// Required designer variable.
@@ -28,7 +28,7 @@
       /// </summary>
       private void InitializeComponent()
       {
-         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
          this.btnGenerate = new System.Windows.Forms.Button();
          this.btnClear = new System.Windows.Forms.Button();
          this.tblExit = new System.Windows.Forms.Button();

@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace GenerateCommentAboutAuthor
 {
-   public partial class mainForm : Form
+   public partial class FrmMain : Form
    {
 
       #region >> Fields <<
@@ -30,7 +30,7 @@ namespace GenerateCommentAboutAuthor
 
       #region >> Constructor <<
 
-      public mainForm()
+      public FrmMain()
       {
          InitializeComponent();
       }

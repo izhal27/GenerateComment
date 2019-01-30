@@ -20,3 +20,11 @@ D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentA
 D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.mainForm.resources
 D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateComment.Properties.Resources.resources
 D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.csproj.GenerateResource.Cache
+C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateComment.exe
+C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateComment.pdb
+C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\bin\Release\GenerateComment.exe
+C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\bin\Release\GenerateComment.pdb
+C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.csprojResolveAssemblyReference.cache
+C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.mainForm.resources
+C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateComment.Properties.Resources.resources
+C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.csproj.GenerateResource.Cache
