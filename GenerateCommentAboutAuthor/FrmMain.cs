@@ -33,6 +33,9 @@ namespace GenerateCommentAboutAuthor
       public FrmMain()
       {
          InitializeComponent();
+         btnGenerate.Enabled = false;
+         btnClear.Enabled = false;
+         saveSumberToolStripMenuItem.Enabled = false;
       }
 
       #endregion
@@ -43,9 +46,7 @@ namespace GenerateCommentAboutAuthor
 
       private void mainForm_Load(object sender, EventArgs e)
       {
-         btnGenerate.Enabled = false;
-         btnClear.Enabled = false;
-         saveSumberToolStripMenuItem.Enabled = false;
+         SetControlFocus(rtBoxHeader);
       }
 
       private void tblGenerate_Click(object sender, EventArgs e)
@@ -53,15 +54,29 @@ namespace GenerateCommentAboutAuthor
          if (rtBoxSumber.TextLength != 0)
          {
             rtBoxHasil.Lines = Generate(rtBoxSumber.Lines).ToArray();
-            ActiveControl = btnCopy;
+            SetControlFocus(btnCopy);
          }
       }
 
       private void tblClear_Click(object sender, EventArgs e)
       {
-         rtBoxSumber.Clear();
-         rtBoxHasil.Clear();
-         ActiveControl = rtBoxSumber;
+         ClearControls(this);
+         SetControlFocus(rtBoxHeader);
+      }
+
+      private void SetControlFocus(Control control)
+      {
+         ActiveControl = control;
+      }
+
+      private void ClearControls(Control control)
+      {
+         foreach (Control ctrl in control.Controls)
+         {
+            if (ctrl is RichTextBox) ((RichTextBox)ctrl).Clear();
+
+            ClearControls(ctrl);
+         }
       }
 
       private void rchSumber_TextChanged(object sender, EventArgs e)
@@ -225,9 +240,10 @@ namespace GenerateCommentAboutAuthor
       /// </summary>
       private void SaveSumber()
       {
-         if (!String.IsNullOrEmpty(rtBoxSumber.Text) && rtBoxSumber.Text.Trim().Length != 0)
+         if (!string.IsNullOrEmpty(rtBoxSumber.Text) && rtBoxSumber.Text.Trim().Length != 0)
          {
             int lokasi = LokasiEnter(rtBoxSumber.Text);
+            var saveFileDialog = new SaveFileDialog();
 
             if (lokasi != 0)
                saveFileDialog.FileName = rtBoxSumber.Text.Substring(0, lokasi);
@@ -254,10 +270,11 @@ namespace GenerateCommentAboutAuthor
       /// </summary>
       private void MuatSumber()
       {
+         var openFileDialog = new OpenFileDialog();
          openFileDialog.InitialDirectory = Environment.CurrentDirectory;
          openFileDialog.FileName = "";
-         DialogResult result = openFileDialog.ShowDialog();
-         if (result == DialogResult.OK)
+
+         if (openFileDialog.ShowDialog() == DialogResult.OK)
          {
             try
             {

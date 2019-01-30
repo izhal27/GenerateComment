@@ -31,7 +31,7 @@
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
          this.btnGenerate = new System.Windows.Forms.Button();
          this.btnClear = new System.Windows.Forms.Button();
-         this.tblExit = new System.Windows.Forms.Button();
+         this.btnExit = new System.Windows.Forms.Button();
          this.rtBoxSumber = new System.Windows.Forms.RichTextBox();
          this.rtBoxHasil = new System.Windows.Forms.RichTextBox();
          this.label1 = new System.Windows.Forms.Label();
@@ -44,61 +44,77 @@
          this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.tentangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-         this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
          this.btnCopy = new System.Windows.Forms.Button();
+         this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+         this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+         this.label3 = new System.Windows.Forms.Label();
+         this.label4 = new System.Windows.Forms.Label();
+         this.rtBoxHeader = new System.Windows.Forms.RichTextBox();
+         this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+         this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
          this.menuStrip1.SuspendLayout();
+         this.tableLayoutPanel1.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+         this.tableLayoutPanel2.SuspendLayout();
+         this.tableLayoutPanel3.SuspendLayout();
          this.SuspendLayout();
          // 
-         // tblGenerate
+         // btnGenerate
          // 
-         this.btnGenerate.Location = new System.Drawing.Point(12, 264);
-         this.btnGenerate.Name = "tblGenerate";
+         this.btnGenerate.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.btnGenerate.Location = new System.Drawing.Point(3, 3);
+         this.btnGenerate.Name = "btnGenerate";
          this.btnGenerate.Size = new System.Drawing.Size(75, 35);
-         this.btnGenerate.TabIndex = 1;
+         this.btnGenerate.TabIndex = 3;
          this.btnGenerate.Text = "&Generate";
          this.btnGenerate.UseVisualStyleBackColor = true;
          this.btnGenerate.Click += new System.EventHandler(this.tblGenerate_Click);
          // 
-         // tblClear
+         // btnClear
          // 
-         this.btnClear.Location = new System.Drawing.Point(93, 264);
-         this.btnClear.Name = "tblClear";
+         this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.btnClear.Location = new System.Drawing.Point(84, 3);
+         this.btnClear.Name = "btnClear";
          this.btnClear.Size = new System.Drawing.Size(75, 35);
-         this.btnClear.TabIndex = 3;
+         this.btnClear.TabIndex = 4;
          this.btnClear.Text = "&Clear";
          this.btnClear.UseVisualStyleBackColor = true;
          this.btnClear.Click += new System.EventHandler(this.tblClear_Click);
          // 
-         // tblExit
+         // btnExit
          // 
-         this.tblExit.Location = new System.Drawing.Point(174, 264);
-         this.tblExit.Name = "tblExit";
-         this.tblExit.Size = new System.Drawing.Size(75, 35);
-         this.tblExit.TabIndex = 4;
-         this.tblExit.Text = "&Exit";
-         this.tblExit.UseVisualStyleBackColor = true;
-         this.tblExit.Click += new System.EventHandler(this.btnExit_Click);
+         this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.btnExit.Location = new System.Drawing.Point(165, 3);
+         this.btnExit.Name = "btnExit";
+         this.btnExit.Size = new System.Drawing.Size(75, 35);
+         this.btnExit.TabIndex = 5;
+         this.btnExit.Text = "&Exit";
+         this.btnExit.UseVisualStyleBackColor = true;
+         this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
          // 
-         // rchSumber
+         // rtBoxSumber
          // 
+         this.rtBoxSumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.tableLayoutPanel1.SetColumnSpan(this.rtBoxSumber, 2);
          this.rtBoxSumber.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.rtBoxSumber.Location = new System.Drawing.Point(12, 58);
-         this.rtBoxSumber.Name = "rchSumber";
-         this.rtBoxSumber.Size = new System.Drawing.Size(460, 200);
-         this.rtBoxSumber.TabIndex = 0;
+         this.rtBoxSumber.Location = new System.Drawing.Point(3, 205);
+         this.rtBoxSumber.Name = "rtBoxSumber";
+         this.rtBoxSumber.Size = new System.Drawing.Size(347, 200);
+         this.rtBoxSumber.TabIndex = 2;
          this.rtBoxSumber.Text = "";
          this.rtBoxSumber.WordWrap = false;
          this.rtBoxSumber.TextChanged += new System.EventHandler(this.rchSumber_TextChanged);
          // 
-         // rchHasil
+         // rtBoxHasil
          // 
+         this.rtBoxHasil.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.tableLayoutPanel3.SetColumnSpan(this.rtBoxHasil, 2);
          this.rtBoxHasil.Cursor = System.Windows.Forms.Cursors.Arrow;
          this.rtBoxHasil.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.rtBoxHasil.Location = new System.Drawing.Point(12, 336);
-         this.rtBoxHasil.Name = "rchHasil";
+         this.rtBoxHasil.Location = new System.Drawing.Point(3, 40);
+         this.rtBoxHasil.Name = "rtBoxHasil";
          this.rtBoxHasil.ReadOnly = true;
-         this.rtBoxHasil.Size = new System.Drawing.Size(460, 200);
+         this.rtBoxHasil.Size = new System.Drawing.Size(460, 365);
          this.rtBoxHasil.TabIndex = 5;
          this.rtBoxHasil.TabStop = false;
          this.rtBoxHasil.Text = "";
@@ -107,21 +123,23 @@
          // 
          // label1
          // 
+         this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label1.AutoSize = true;
          this.label1.BackColor = System.Drawing.Color.Transparent;
          this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.label1.Location = new System.Drawing.Point(9, 36);
+         this.label1.Location = new System.Drawing.Point(3, 35);
          this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(60, 19);
+         this.label1.Size = new System.Drawing.Size(59, 19);
          this.label1.TabIndex = 6;
-         this.label1.Text = "Sumber";
+         this.label1.Text = "Header";
          // 
          // label2
          // 
+         this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.label2.AutoSize = true;
          this.label2.BackColor = System.Drawing.Color.Transparent;
          this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.label2.Location = new System.Drawing.Point(12, 314);
+         this.label2.Location = new System.Drawing.Point(3, 5);
          this.label2.Name = "label2";
          this.label2.Size = new System.Drawing.Size(44, 19);
          this.label2.TabIndex = 7;
@@ -134,7 +152,7 @@
             this.helpToolStripMenuItem});
          this.menuStrip1.Location = new System.Drawing.Point(0, 0);
          this.menuStrip1.Name = "menuStrip1";
-         this.menuStrip1.Size = new System.Drawing.Size(484, 24);
+         this.menuStrip1.Size = new System.Drawing.Size(869, 24);
          this.menuStrip1.TabIndex = 8;
          this.menuStrip1.Text = "menuStrip1";
          // 
@@ -193,50 +211,158 @@
          this.tentangToolStripMenuItem.Text = "&Tentang";
          this.tentangToolStripMenuItem.Click += new System.EventHandler(this.tentangToolStripMenuItem_Click);
          // 
-         // saveFileDialog
+         // btnCopy
          // 
-         this.saveFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-         // 
-         // openFileDialog
-         // 
-         this.openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-         // 
-         // tblCopy
-         // 
+         this.btnCopy.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.btnCopy.Enabled = false;
-         this.btnCopy.Location = new System.Drawing.Point(12, 542);
-         this.btnCopy.Name = "tblCopy";
+         this.btnCopy.Location = new System.Drawing.Point(374, 3);
+         this.btnCopy.Name = "btnCopy";
          this.btnCopy.Size = new System.Drawing.Size(75, 35);
-         this.btnCopy.TabIndex = 2;
+         this.btnCopy.TabIndex = 6;
          this.btnCopy.Text = "Co&py";
          this.btnCopy.UseVisualStyleBackColor = true;
          this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
          // 
-         // mainForm
+         // tableLayoutPanel1
+         // 
+         this.tableLayoutPanel1.ColumnCount = 2;
+         this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+         this.tableLayoutPanel1.Controls.Add(this.numericUpDown1, 1, 0);
+         this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
+         this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
+         this.tableLayoutPanel1.Controls.Add(this.rtBoxSumber, 0, 4);
+         this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
+         this.tableLayoutPanel1.Controls.Add(this.rtBoxHeader, 0, 2);
+         this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 27);
+         this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+         this.tableLayoutPanel1.RowCount = 5;
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(365, 415);
+         this.tableLayoutPanel1.TabIndex = 9;
+         // 
+         // numericUpDown1
+         // 
+         this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.numericUpDown1.Location = new System.Drawing.Point(148, 5);
+         this.numericUpDown1.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+         this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+         this.numericUpDown1.Name = "numericUpDown1";
+         this.numericUpDown1.Size = new System.Drawing.Size(56, 20);
+         this.numericUpDown1.TabIndex = 0;
+         this.numericUpDown1.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+         // 
+         // label3
+         // 
+         this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label3.AutoSize = true;
+         this.label3.Location = new System.Drawing.Point(3, 8);
+         this.label3.Name = "label3";
+         this.label3.Size = new System.Drawing.Size(139, 13);
+         this.label3.TabIndex = 1;
+         this.label3.Text = "Lebar (Banyaknya Karakter)";
+         // 
+         // label4
+         // 
+         this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.label4.AutoSize = true;
+         this.label4.BackColor = System.Drawing.Color.Transparent;
+         this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.label4.Location = new System.Drawing.Point(3, 171);
+         this.label4.Name = "label4";
+         this.label4.Size = new System.Drawing.Size(60, 19);
+         this.label4.TabIndex = 6;
+         this.label4.Text = "Sumber";
+         // 
+         // richTextBox1
+         // 
+         this.rtBoxHeader.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.tableLayoutPanel1.SetColumnSpan(this.rtBoxHeader, 2);
+         this.rtBoxHeader.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.rtBoxHeader.Location = new System.Drawing.Point(3, 63);
+         this.rtBoxHeader.Name = "richTextBox1";
+         this.rtBoxHeader.Size = new System.Drawing.Size(347, 100);
+         this.rtBoxHeader.TabIndex = 1;
+         this.rtBoxHeader.Text = "";
+         this.rtBoxHeader.WordWrap = false;
+         this.rtBoxHeader.TextChanged += new System.EventHandler(this.rchSumber_TextChanged);
+         // 
+         // tableLayoutPanel2
+         // 
+         this.tableLayoutPanel2.ColumnCount = 5;
+         this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+         this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+         this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 477F));
+         this.tableLayoutPanel2.Controls.Add(this.btnGenerate, 0, 0);
+         this.tableLayoutPanel2.Controls.Add(this.btnClear, 1, 0);
+         this.tableLayoutPanel2.Controls.Add(this.btnCopy, 4, 0);
+         this.tableLayoutPanel2.Controls.Add(this.btnExit, 2, 0);
+         this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 448);
+         this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+         this.tableLayoutPanel2.RowCount = 1;
+         this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+         this.tableLayoutPanel2.Size = new System.Drawing.Size(848, 42);
+         this.tableLayoutPanel2.TabIndex = 10;
+         // 
+         // tableLayoutPanel3
+         // 
+         this.tableLayoutPanel3.ColumnCount = 2;
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+         this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+         this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
+         this.tableLayoutPanel3.Controls.Add(this.rtBoxHasil, 0, 1);
+         this.tableLayoutPanel3.Location = new System.Drawing.Point(383, 27);
+         this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+         this.tableLayoutPanel3.RowCount = 2;
+         this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+         this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+         this.tableLayoutPanel3.Size = new System.Drawing.Size(477, 415);
+         this.tableLayoutPanel3.TabIndex = 11;
+         // 
+         // FrmMain
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(484, 583);
-         this.Controls.Add(this.btnCopy);
-         this.Controls.Add(this.label2);
-         this.Controls.Add(this.label1);
-         this.Controls.Add(this.rtBoxHasil);
-         this.Controls.Add(this.rtBoxSumber);
-         this.Controls.Add(this.tblExit);
-         this.Controls.Add(this.btnClear);
-         this.Controls.Add(this.btnGenerate);
+         this.ClientSize = new System.Drawing.Size(869, 499);
+         this.Controls.Add(this.tableLayoutPanel3);
+         this.Controls.Add(this.tableLayoutPanel2);
+         this.Controls.Add(this.tableLayoutPanel1);
          this.Controls.Add(this.menuStrip1);
          this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
          this.KeyPreview = true;
          this.MainMenuStrip = this.menuStrip1;
          this.MaximizeBox = false;
-         this.Name = "mainForm";
+         this.Name = "FrmMain";
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "Generate Comment Author";
          this.Load += new System.EventHandler(this.mainForm_Load);
          this.menuStrip1.ResumeLayout(false);
          this.menuStrip1.PerformLayout();
+         this.tableLayoutPanel1.ResumeLayout(false);
+         this.tableLayoutPanel1.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+         this.tableLayoutPanel2.ResumeLayout(false);
+         this.tableLayoutPanel3.ResumeLayout(false);
+         this.tableLayoutPanel3.PerformLayout();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -246,7 +372,7 @@
 
       private System.Windows.Forms.Button btnGenerate;
       private System.Windows.Forms.Button btnClear;
-      private System.Windows.Forms.Button tblExit;
+      private System.Windows.Forms.Button btnExit;
       private System.Windows.Forms.RichTextBox rtBoxSumber;
       private System.Windows.Forms.RichTextBox rtBoxHasil;
       private System.Windows.Forms.Label label1;
@@ -258,11 +384,15 @@
       private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem tentangToolStripMenuItem;
-      private System.Windows.Forms.SaveFileDialog saveFileDialog;
-      private System.Windows.Forms.OpenFileDialog openFileDialog;
       private System.Windows.Forms.ToolStripMenuItem muatSumberToolStripMenuItem;
       private System.Windows.Forms.Button btnCopy;
-
+      private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+      private System.Windows.Forms.NumericUpDown numericUpDown1;
+      private System.Windows.Forms.Label label3;
+      private System.Windows.Forms.Label label4;
+      private System.Windows.Forms.RichTextBox rtBoxHeader;
+      private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+      private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
    }
 }
 
