@@ -13,6 +13,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace GenerateCommentAboutAuthor
 {
@@ -84,18 +85,19 @@ namespace GenerateCommentAboutAuthor
 
       private void muatSumberToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         MuatSumber();
+         LoadFromXML();
       }
 
       private void saveSumberToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         SaveSumber();
+         SaveToXML();
       }
 
       private void tentangToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         MessageBox.Show("Generate Comment Author\nBy: Risal Walangadi ©2015 - " + DateTime.Now.Year,
-            "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+         MessageBox.Show("Generate Comment Author\nBy: Risal Walangadi ©2015 - "
+            + DateTime.Now.Year, "Info", MessageBoxButtons.OK
+            , MessageBoxIcon.Information);
       }
 
       private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -123,7 +125,7 @@ namespace GenerateCommentAboutAuthor
 
       // ----------------------------------------------------------------------//
 
-      #region methods
+      #region >> Methods <<
 
       /// <summary>
       /// Menggenerate teks data sumber
@@ -137,15 +139,15 @@ namespace GenerateCommentAboutAuthor
          AppendString(" ", sb);
          AppendHeader(sb);
          AppendString(" ", sb);
-         AppendString("-", sb);
+         AppendString("-", sb); // Garis pembatas
          AppendString(" ", sb);
          AppendDataDetail(sb);
          AppendString(" ", sb);
          AppendBottom(sb);
-                  
+
          return sb;
       }
-      
+
       /// <summary>
       /// Garis paling atas
       /// </summary>
@@ -154,18 +156,18 @@ namespace GenerateCommentAboutAuthor
       {
          for (int c = 0; c < Lebar; c++)
          {
-               if (c == 0)
-               {
-                  // Start
-                  sbHasil.Append("/");
-                  continue;
-               }
-            
+            if (c == 0)
+            {
+               // Start
+               sbHasil.Append("/");
+               continue;
+            }
+
             sbHasil.Append("*");
          }
 
          sbHasil.AppendLine();
-      }      
+      }
 
       /// <summary>
       /// Garis paling bawah
@@ -175,19 +177,19 @@ namespace GenerateCommentAboutAuthor
       {
          for (int c = 0; c < Lebar; c++)
          {
-               if (c == (Lebar - 1))
-               {
-                  // End
-                  sbHasil.Append("/");
-                  continue;
-               }
+            if (c == (Lebar - 1))
+            {
+               // End
+               sbHasil.Append("/");
+               continue;
+            }
 
             sbHasil.Append("*");
          }
 
          sbHasil.AppendLine();
       }
-      
+
       /// <summary>
       /// Tambahkan spasi atau karakter
       /// </summary>
@@ -307,30 +309,47 @@ namespace GenerateCommentAboutAuthor
       }
 
       /// <summary>
-      /// Perintah untuk menyimpan
-      /// text sumber
+      /// Perintah untuk menyimpan data ke file XML
       /// </summary>
-      private void SaveSumber()
+      private void SaveToXML()
       {
          if (!string.IsNullOrEmpty(rtBoxData.Text) && rtBoxData.Text.Trim().Length != 0)
          {
-            int lokasi = LokasiEnter(rtBoxData.Text);
             var saveFileDialog = new SaveFileDialog();
-
-            if (lokasi != 0)
-               saveFileDialog.FileName = rtBoxData.Text.Substring(0, lokasi);
-            else
-               saveFileDialog.FileName = rtBoxData.Text.Trim();
             saveFileDialog.InitialDirectory = Environment.CurrentDirectory;
-            DialogResult result = saveFileDialog.ShowDialog();
-            string file = saveFileDialog.FileName;
-            string data = rtBoxData.Text;
+            saveFileDialog.Filter = "XML Files|*.xml";
+
             try
             {
-               if (result == DialogResult.OK)
-                  SaveFile(file, data);
+               if (saveFileDialog.ShowDialog() == DialogResult.OK)
+               {
+                  XDocument xdoc = new XDocument();
+                  XElement root = new XElement("Root");
+                  XElement header = new XElement("Header");
+                  XElement data = new XElement("Data");
+
+                  // Ambil setiap line di rtBoxHeader untuk dijadikan element,
+                  // contoh <Line0>Data pada baris pertama</Line0>
+                  List<XElement> listHeader = rtBoxHeader.Lines
+                     .ToList().Select((v, i) => { return new XElement("Line" + i, v); }).ToList();
+                  // Tambahkan pada instance header element
+                  header.Add(listHeader);
+
+                  List<XElement> listData = rtBoxData.Lines
+                     .ToList().Select((v, i) => { return new XElement("Line" + i, v); }).ToList();
+                  // Tambahkan pada instance data element
+                  data.Add(listData);
+
+                  // Tambahkan header dan data pada root element
+                  root.Add(header);
+                  root.Add(data);
+                  // Tambahkan root pada instance xdoc
+                  xdoc.Add(root);
+                  // Simpan sesuai lokasi dan filename yang ditentukan
+                  xdoc.Save(saveFileDialog.FileName);
+               }
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
                MessageBox.Show(ex.Message);
             }
@@ -338,69 +357,35 @@ namespace GenerateCommentAboutAuthor
       }
 
       /// <summary>
-      /// Perintah untuk memuat data sumber
+      /// Perintah untuk memuat data dari file XML
       /// </summary>
-      private void MuatSumber()
+      private void LoadFromXML()
       {
          var openFileDialog = new OpenFileDialog();
          openFileDialog.InitialDirectory = Environment.CurrentDirectory;
+         openFileDialog.Filter = "XML Files|*.xml";
          openFileDialog.FileName = "";
 
          if (openFileDialog.ShowDialog() == DialogResult.OK)
          {
             try
             {
-               rtBoxData.Text = ReadFile(openFileDialog.FileName);
-               if (rtBoxHasil.Text.Length != 0)
-                  rtBoxHasil.Clear();
+               XDocument xdoc = XDocument.Load(openFileDialog.FileName);
+               var listHeader = xdoc.Descendants("Header").Elements().ToList();
+               var listData = xdoc.Descendants("Data").Elements().ToList();
+
+               rtBoxHeader.Lines = listHeader.Select(el => { return el.Value; }).ToArray();
+               rtBoxData.Lines = listData.Select(el => { return el.Value; }).ToArray();
+
+               rtBoxHasil.Clear();
+
                ActiveControl = btnGenerate;
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
                MessageBox.Show(ex.Message);
             }
          }
-      }
-
-      /// <summary>
-      /// Membaca teks dari file yang dipilih
-      /// </summary>
-      /// <param name="lokasiFile">Tempat penyimpanan file</param>
-      /// <returns></returns>
-      private static string ReadFile(string lokasiFile)
-      {
-         using (StreamReader reader = new StreamReader(lokasiFile))
-         {
-            return reader.ReadToEnd();
-         }
-      }
-
-      /// <summary>
-      /// Menyimpan file ke lokasi yang dipilih
-      /// </summary>
-      /// <param name="lokasiFile">Lokasi penyimpanan file</param>
-      /// <param name="data">Data yang akan disimpan</param>
-      private static void SaveFile(string lokasiFile, string data)
-      {
-         using (StreamWriter writer = new StreamWriter(lokasiFile))
-         {
-            writer.Write(data);
-         }
-      }
-
-      /// <summary>
-      /// Mencari lokasi enter pertama
-      /// </summary>
-      /// <param name="data">Data teks</param>
-      /// <returns>Mengembalikan lokasi enter</returns>
-      private static int LokasiEnter(string data)
-      {
-         int lokasi = data.IndexOf('\n');
-
-         if (lokasi != -1)
-            return lokasi;
-
-         return 0;
       }
 
       private void ClearControls(Control control)
