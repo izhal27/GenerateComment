@@ -14,3 +14,12 @@ D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor
 D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.mainForm.resources
 D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateComment.exe
 D:\Backup Data\Visual Studio 2012\Projects\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateComment.pdb
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\bin\Debug\GenerateComment.exe.config
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateComment.exe
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateComment.pdb
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\bin\Debug\GenerateComment.exe
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\bin\Debug\GenerateComment.pdb
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.csprojResolveAssemblyReference.cache
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.FrmMain.resources
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateComment.Properties.Resources.resources
+D:\Backup Data\_Projects_\Belajar C#\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Debug\GenerateCommentAboutAuthor.csproj.GenerateResource.Cache
