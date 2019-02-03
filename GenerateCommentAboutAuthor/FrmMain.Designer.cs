@@ -32,7 +32,7 @@
          this.btnGenerate = new System.Windows.Forms.Button();
          this.btnClear = new System.Windows.Forms.Button();
          this.btnExit = new System.Windows.Forms.Button();
-         this.rtBoxSumber = new System.Windows.Forms.RichTextBox();
+         this.rtBoxData = new System.Windows.Forms.RichTextBox();
          this.rtBoxHasil = new System.Windows.Forms.RichTextBox();
          this.label1 = new System.Windows.Forms.Label();
          this.label2 = new System.Windows.Forms.Label();
@@ -40,13 +40,13 @@
          this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.muatSumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.saveSumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
          this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.tentangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.btnCopy = new System.Windows.Forms.Button();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-         this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+         this.nmUpDwnLebar = new System.Windows.Forms.NumericUpDown();
          this.label3 = new System.Windows.Forms.Label();
          this.label4 = new System.Windows.Forms.Label();
          this.rtBoxHeader = new System.Windows.Forms.RichTextBox();
@@ -54,7 +54,7 @@
          this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
          this.menuStrip1.SuspendLayout();
          this.tableLayoutPanel1.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnLebar)).BeginInit();
          this.tableLayoutPanel2.SuspendLayout();
          this.tableLayoutPanel3.SuspendLayout();
          this.SuspendLayout();
@@ -92,18 +92,18 @@
          this.btnExit.UseVisualStyleBackColor = true;
          this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
          // 
-         // rtBoxSumber
+         // rtBoxData
          // 
-         this.rtBoxSumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.tableLayoutPanel1.SetColumnSpan(this.rtBoxSumber, 2);
-         this.rtBoxSumber.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.rtBoxSumber.Location = new System.Drawing.Point(3, 205);
-         this.rtBoxSumber.Name = "rtBoxSumber";
-         this.rtBoxSumber.Size = new System.Drawing.Size(347, 200);
-         this.rtBoxSumber.TabIndex = 2;
-         this.rtBoxSumber.Text = "";
-         this.rtBoxSumber.WordWrap = false;
-         this.rtBoxSumber.TextChanged += new System.EventHandler(this.rchSumber_TextChanged);
+         this.rtBoxData.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.tableLayoutPanel1.SetColumnSpan(this.rtBoxData, 2);
+         this.rtBoxData.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.rtBoxData.Location = new System.Drawing.Point(3, 205);
+         this.rtBoxData.Name = "rtBoxData";
+         this.rtBoxData.Size = new System.Drawing.Size(347, 200);
+         this.rtBoxData.TabIndex = 2;
+         this.rtBoxData.Text = "";
+         this.rtBoxData.WordWrap = false;
+         this.rtBoxData.TextChanged += new System.EventHandler(this.rtBox_TextChanged);
          // 
          // rtBoxHasil
          // 
@@ -161,7 +161,7 @@
          this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.muatSumberToolStripMenuItem,
             this.saveSumberToolStripMenuItem,
-            this.toolStripMenuItem2,
+            this.toolStripSeparator1,
             this.exitToolStripMenuItem});
          this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
          this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -171,28 +171,27 @@
          // 
          this.muatSumberToolStripMenuItem.Name = "muatSumberToolStripMenuItem";
          this.muatSumberToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-         this.muatSumberToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-         this.muatSumberToolStripMenuItem.Text = "&Muat Sumber";
+         this.muatSumberToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+         this.muatSumberToolStripMenuItem.Text = "&Muat Sumber Data";
          this.muatSumberToolStripMenuItem.Click += new System.EventHandler(this.muatSumberToolStripMenuItem_Click);
          // 
          // saveSumberToolStripMenuItem
          // 
          this.saveSumberToolStripMenuItem.Name = "saveSumberToolStripMenuItem";
          this.saveSumberToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-         this.saveSumberToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-         this.saveSumberToolStripMenuItem.Text = "&Simpan Sumber";
+         this.saveSumberToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+         this.saveSumberToolStripMenuItem.Text = "&Simpan Sumber Data";
          this.saveSumberToolStripMenuItem.Click += new System.EventHandler(this.saveSumberToolStripMenuItem_Click);
          // 
-         // toolStripMenuItem2
+         // toolStripSeparator1
          // 
-         this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-         this.toolStripMenuItem2.Size = new System.Drawing.Size(198, 22);
-         this.toolStripMenuItem2.Text = "----------------------";
+         this.toolStripSeparator1.Name = "toolStripSeparator1";
+         this.toolStripSeparator1.Size = new System.Drawing.Size(222, 6);
          // 
          // exitToolStripMenuItem
          // 
          this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-         this.exitToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+         this.exitToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
          this.exitToolStripMenuItem.Text = "E&xit";
          this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
          // 
@@ -228,10 +227,10 @@
          this.tableLayoutPanel1.ColumnCount = 2;
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-         this.tableLayoutPanel1.Controls.Add(this.numericUpDown1, 1, 0);
+         this.tableLayoutPanel1.Controls.Add(this.nmUpDwnLebar, 1, 0);
          this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
          this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
-         this.tableLayoutPanel1.Controls.Add(this.rtBoxSumber, 0, 4);
+         this.tableLayoutPanel1.Controls.Add(this.rtBoxData, 0, 4);
          this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
          this.tableLayoutPanel1.Controls.Add(this.rtBoxHeader, 0, 2);
          this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 27);
@@ -245,25 +244,30 @@
          this.tableLayoutPanel1.Size = new System.Drawing.Size(365, 415);
          this.tableLayoutPanel1.TabIndex = 9;
          // 
-         // numericUpDown1
+         // nmUpDwnLebar
          // 
-         this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-         this.numericUpDown1.Location = new System.Drawing.Point(148, 5);
-         this.numericUpDown1.Maximum = new decimal(new int[] {
+         this.nmUpDwnLebar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.nmUpDwnLebar.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+         this.nmUpDwnLebar.Location = new System.Drawing.Point(148, 5);
+         this.nmUpDwnLebar.Maximum = new decimal(new int[] {
             300,
             0,
             0,
             0});
-         this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
+         this.nmUpDwnLebar.Minimum = new decimal(new int[] {
+            30,
             0,
             0,
             0});
-         this.numericUpDown1.Name = "numericUpDown1";
-         this.numericUpDown1.Size = new System.Drawing.Size(56, 20);
-         this.numericUpDown1.TabIndex = 0;
-         this.numericUpDown1.Value = new decimal(new int[] {
-            100,
+         this.nmUpDwnLebar.Name = "nmUpDwnLebar";
+         this.nmUpDwnLebar.Size = new System.Drawing.Size(56, 20);
+         this.nmUpDwnLebar.TabIndex = 0;
+         this.nmUpDwnLebar.Value = new decimal(new int[] {
+            50,
             0,
             0,
             0});
@@ -286,22 +290,22 @@
          this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.label4.Location = new System.Drawing.Point(3, 171);
          this.label4.Name = "label4";
-         this.label4.Size = new System.Drawing.Size(60, 19);
+         this.label4.Size = new System.Drawing.Size(42, 19);
          this.label4.TabIndex = 6;
-         this.label4.Text = "Sumber";
+         this.label4.Text = "Data";
          // 
-         // richTextBox1
+         // rtBoxHeader
          // 
          this.rtBoxHeader.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.tableLayoutPanel1.SetColumnSpan(this.rtBoxHeader, 2);
          this.rtBoxHeader.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.rtBoxHeader.Location = new System.Drawing.Point(3, 63);
-         this.rtBoxHeader.Name = "richTextBox1";
+         this.rtBoxHeader.Name = "rtBoxHeader";
          this.rtBoxHeader.Size = new System.Drawing.Size(347, 100);
          this.rtBoxHeader.TabIndex = 1;
          this.rtBoxHeader.Text = "";
          this.rtBoxHeader.WordWrap = false;
-         this.rtBoxHeader.TextChanged += new System.EventHandler(this.rchSumber_TextChanged);
+         this.rtBoxHeader.TextChanged += new System.EventHandler(this.rtBox_TextChanged);
          // 
          // tableLayoutPanel2
          // 
@@ -359,7 +363,7 @@
          this.menuStrip1.PerformLayout();
          this.tableLayoutPanel1.ResumeLayout(false);
          this.tableLayoutPanel1.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnLebar)).EndInit();
          this.tableLayoutPanel2.ResumeLayout(false);
          this.tableLayoutPanel3.ResumeLayout(false);
          this.tableLayoutPanel3.PerformLayout();
@@ -373,26 +377,26 @@
       private System.Windows.Forms.Button btnGenerate;
       private System.Windows.Forms.Button btnClear;
       private System.Windows.Forms.Button btnExit;
-      private System.Windows.Forms.RichTextBox rtBoxSumber;
+      private System.Windows.Forms.RichTextBox rtBoxData;
       private System.Windows.Forms.RichTextBox rtBoxHasil;
       private System.Windows.Forms.Label label1;
       private System.Windows.Forms.Label label2;
       private System.Windows.Forms.MenuStrip menuStrip1;
       private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem saveSumberToolStripMenuItem;
-      private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
       private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem tentangToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem muatSumberToolStripMenuItem;
       private System.Windows.Forms.Button btnCopy;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-      private System.Windows.Forms.NumericUpDown numericUpDown1;
+      private System.Windows.Forms.NumericUpDown nmUpDwnLebar;
       private System.Windows.Forms.Label label3;
       private System.Windows.Forms.Label label4;
       private System.Windows.Forms.RichTextBox rtBoxHeader;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+      private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
    }
 }
 

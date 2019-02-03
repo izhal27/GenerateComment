@@ -28,3 +28,4 @@ C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAutho
 C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateComment.Properties.Resources.resources
 C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.csproj.GenerateResource.Cache
 C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\obj\Release\GenerateCommentAboutAuthor.FrmMain.resources
+C:\Users\TOSHIBA\Documents\Visual Studio 2015\Projects\GenerateCommentAboutAuthor\GenerateCommentAboutAuthor\bin\Release\GenerateComment.exe.config

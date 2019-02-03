@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace GenerateCommentAboutAuthor
 {
@@ -20,9 +21,15 @@ namespace GenerateCommentAboutAuthor
 
       #region >> Fields <<
 
-      private static int panjang, lebar;
-      private static string temp;
-      private static List<string> hasil;
+      private string _rawXml = "<header></header><data></data>";
+
+      #endregion
+
+      // ----------------------------------------------------------------------//
+
+      #region >> Properties <<
+
+      public int Lebar { get { return (int)nmUpDwnLebar.Value; } }
 
       #endregion
 
@@ -51,11 +58,8 @@ namespace GenerateCommentAboutAuthor
 
       private void tblGenerate_Click(object sender, EventArgs e)
       {
-         if (rtBoxSumber.TextLength != 0)
-         {
-            rtBoxHasil.Lines = Generate(rtBoxSumber.Lines).ToArray();
-            SetControlFocus(btnCopy);
-         }
+         rtBoxHasil.Text = Generate().ToString();
+         SetControlFocus(btnCopy);
       }
 
       private void tblClear_Click(object sender, EventArgs e)
@@ -69,30 +73,13 @@ namespace GenerateCommentAboutAuthor
          ActiveControl = control;
       }
 
-      private void ClearControls(Control control)
+      private void rtBox_TextChanged(object sender, EventArgs e)
       {
-         foreach (Control ctrl in control.Controls)
-         {
-            if (ctrl is RichTextBox) ((RichTextBox)ctrl).Clear();
+         var status = rtBoxHeader.TextLength != 0 && rtBoxData.TextLength != 0;
 
-            ClearControls(ctrl);
-         }
-      }
-
-      private void rchSumber_TextChanged(object sender, EventArgs e)
-      {
-         if (rtBoxSumber.TextLength != 0)
-         {
-            btnGenerate.Enabled = true;
-            btnClear.Enabled = true;
-            saveSumberToolStripMenuItem.Enabled = true;
-         }
-         else
-         {
-            btnGenerate.Enabled = false;
-            btnClear.Enabled = false;
-            saveSumberToolStripMenuItem.Enabled = false;
-         }
+         btnGenerate.Enabled = status;
+         btnClear.Enabled = rtBoxHeader.TextLength != 0 || rtBoxData.TextLength != 0;
+         saveSumberToolStripMenuItem.Enabled = status;
       }
 
       private void muatSumberToolStripMenuItem_Click(object sender, EventArgs e)
@@ -141,97 +128,182 @@ namespace GenerateCommentAboutAuthor
       /// <summary>
       /// Menggenerate teks data sumber
       /// </summary>
-      /// <param name="data">data yang ingin digenerate</param>
       /// <returns>Mengembalikan data yang sudah digenerate</returns>
-      private static List<string> Generate(string[] data)
+      private StringBuilder Generate()
       {
-         panjang = KataTerpanjang(data) + 6;
+         var sb = new StringBuilder();
 
-         lebar = data.Length + 6;
-
-         hasil = new List<string>();
-
-         for (int baris = 1; baris <= lebar; baris++)
+         AppendTop(sb);
+         AppendString(" ", sb);
+         AppendHeader(sb);
+         AppendString(" ", sb);
+         AppendString("-", sb);
+         AppendString(" ", sb);
+         AppendDataDetail(sb);
+         AppendString(" ", sb);
+         AppendBottom(sb);
+                  
+         return sb;
+      }
+      
+      /// <summary>
+      /// Garis paling atas
+      /// </summary>
+      /// <param name="sbHasil"></param>
+      private void AppendTop(StringBuilder sbHasil)
+      {
+         for (int c = 0; c < Lebar; c++)
          {
-            temp = "";
-            if (baris == 1 || baris == lebar)
-            {
-               // buat * sebanyak teks yang terpanjang panjang               
-               for (int kolom = 1; kolom <= panjang; kolom++)
+               if (c == 0)
                {
-                  if ((baris == 1 && kolom == 1) && kolom != panjang)
-                  {
-                     temp += "/";
-                     continue;
-                  }
-                  if (baris == lebar && kolom == panjang)
-                  {
-                     temp += "/";
-                     continue;
-                  }
-                  temp += "*";
+                  // Start
+                  sbHasil.Append("/");
+                  continue;
+               }
+            
+            sbHasil.Append("*");
+         }
 
+         sbHasil.AppendLine();
+      }      
+
+      /// <summary>
+      /// Garis paling bawah
+      /// </summary>
+      /// <param name="sbHasil"></param>
+      private void AppendBottom(StringBuilder sbHasil)
+      {
+         for (int c = 0; c < Lebar; c++)
+         {
+               if (c == (Lebar - 1))
+               {
+                  // End
+                  sbHasil.Append("/");
+                  continue;
                }
-               hasil.Add(temp);
-               temp = "";
-            }
-            else
+
+            sbHasil.Append("*");
+         }
+
+         sbHasil.AppendLine();
+      }
+      
+      /// <summary>
+      /// Tambahkan spasi atau karakter
+      /// </summary>
+      /// <param name="str">Space atau karakter lainnya</param>
+      /// <param name="sbHasil"></param>
+      private void AppendString(string str, StringBuilder sbHasil)
+      {
+         for (int c = 0; c < Lebar; c++)
+         {
+            if (c == 0 || c == (Lebar - 3))
             {
-               if (baris == 4)
-               {
-                  for (int barisData = 1; barisData <= data.Length; barisData++)
-                  {
-                     if (data.Length > 1)
-                     {
-                        if (barisData == data.Length)
-                        {
-                           temp += string.Format("*  {0,-" + (panjang - 4) + "}*", data[barisData - 1]);
-                           continue;
-                        }
-                        temp += string.Format("*  {0,-" + (panjang - 4) + "}*\n", data[barisData - 1]);
-                     }
-                     else
-                     {
-                        temp += string.Format("*  {0,-" + (panjang - 4) + "}*", data[barisData - 1]);
-                     }
-                  }
-                  baris += data.Length - 1;
-                  hasil.Add(temp);
-                  temp = "";
-               }
-               else
-               {
-                  // buat * di ujung kiri
-                  temp += "*";
-                  for (int kolom = 2; kolom < panjang; kolom++)
-                     temp += " ";
-                  // buat * di ujung kanan
-                  temp += "*";
-                  hasil.Add(temp);
-                  temp = "";
-               }
+               sbHasil.Append("**");
+            }
+            else if (c >= 1 && c <= (Lebar - 3))
+            {
+               sbHasil.Append(str);
             }
          }
 
-         return hasil;
+         sbHasil.AppendLine();
       }
 
       /// <summary>
-      /// Mencari kata yang terpanjang
+      /// Tambahkan data header
       /// </summary>
-      /// <param name="data">Data yang ingin di proses</param>
-      /// <returns>Mengembalikan panjang kata</returns>
-      private static int KataTerpanjang(string[] data)
+      /// <param name="sb"></param>
+      private void AppendHeader(StringBuilder sb)
       {
-         panjang = 0;
+         var headerLinesLength = rtBoxHeader.Lines.Count(t => !string.IsNullOrWhiteSpace(t));
+         var textQueue = new Queue<char>();
 
-         for (int i = 0; i < data.Length; i++)
+         for (int i = 0; i < headerLinesLength; i++)
          {
-            if (data[i].Length > panjang)
-               panjang = data[i].Length;
+            foreach (var c in CenterText(rtBoxHeader.Lines[i]))
+            {
+               textQueue.Enqueue(c);
+            }
+
+            for (int c = 0; c < Lebar; c++)
+            {
+               if (c <= 1 || c >= (Lebar - 2))
+               {
+                  sb.Append("*");
+               }
+               else if (c >= 2 && textQueue.Any())
+               {
+                  sb.Append(textQueue.Dequeue());
+               }
+               else
+               {
+                  sb.Append(" ");
+               }
+            }
+
+            sb.AppendLine();
+         }
+      }
+
+      /// <summary>
+      /// Tambahkan data detail
+      /// </summary>
+      /// <param name="sb"></param>
+      private void AppendDataDetail(StringBuilder sb)
+      {
+         var dataLinesLength = rtBoxData.Lines.Count(t => !string.IsNullOrWhiteSpace(t));
+         var textQueue = new Queue<char>();
+
+         for (int i = 0; i < dataLinesLength; i++)
+         {
+            foreach (var s in rtBoxData.Lines[i])
+            {
+               textQueue.Enqueue(s);
+            }
+
+            for (int c = 0; c < Lebar; c++)
+            {
+               if (c <= 1 || c >= (Lebar - 2))
+               {
+                  sb.Append("*");
+               }
+               else if (c >= 4 && textQueue.Any())
+               {
+                  sb.Append(textQueue.Dequeue());
+               }
+               else
+               {
+                  sb.Append(" ");
+               }
+            }
+
+            sb.AppendLine();
+         }
+      }
+
+      /// <summary>
+      /// Membuat text menjadi rata tengah
+      /// </summary>
+      /// <param name="str">Text yang ingin dijadikan rata tengah</param>
+      /// <returns>Mengembalikan text yang telah rata tengah</returns>
+      private string CenterText(string str)
+      {
+         // Mencari selisih kiri kanan menggunakan rumus
+         // Lebar (jumlah karakter) dikurang 4 (bintang kiri dan kanan) lalu dibagi 2,
+         // lalu tambahkan spasi sebanyak margin kiri/kanan yang didapatkan
+         var marginLeft = ((Lebar - 4) - str.Length) / 2;
+         var temp = string.Empty;
+
+         for (int i = 0; i < marginLeft; i++)
+         {
+            temp += " ";
          }
 
-         return panjang;
+         // Tambahkan spasi margin dengan text
+         temp += str;
+
+         return temp;
       }
 
       /// <summary>
@@ -240,19 +312,19 @@ namespace GenerateCommentAboutAuthor
       /// </summary>
       private void SaveSumber()
       {
-         if (!string.IsNullOrEmpty(rtBoxSumber.Text) && rtBoxSumber.Text.Trim().Length != 0)
+         if (!string.IsNullOrEmpty(rtBoxData.Text) && rtBoxData.Text.Trim().Length != 0)
          {
-            int lokasi = LokasiEnter(rtBoxSumber.Text);
+            int lokasi = LokasiEnter(rtBoxData.Text);
             var saveFileDialog = new SaveFileDialog();
 
             if (lokasi != 0)
-               saveFileDialog.FileName = rtBoxSumber.Text.Substring(0, lokasi);
+               saveFileDialog.FileName = rtBoxData.Text.Substring(0, lokasi);
             else
-               saveFileDialog.FileName = rtBoxSumber.Text.Trim();
+               saveFileDialog.FileName = rtBoxData.Text.Trim();
             saveFileDialog.InitialDirectory = Environment.CurrentDirectory;
             DialogResult result = saveFileDialog.ShowDialog();
             string file = saveFileDialog.FileName;
-            string data = rtBoxSumber.Text;
+            string data = rtBoxData.Text;
             try
             {
                if (result == DialogResult.OK)
@@ -278,7 +350,7 @@ namespace GenerateCommentAboutAuthor
          {
             try
             {
-               rtBoxSumber.Text = ReadFile(openFileDialog.FileName);
+               rtBoxData.Text = ReadFile(openFileDialog.FileName);
                if (rtBoxHasil.Text.Length != 0)
                   rtBoxHasil.Clear();
                ActiveControl = btnGenerate;
@@ -329,6 +401,16 @@ namespace GenerateCommentAboutAuthor
             return lokasi;
 
          return 0;
+      }
+
+      private void ClearControls(Control control)
+      {
+         foreach (Control ctrl in control.Controls)
+         {
+            if (ctrl is RichTextBox) ((RichTextBox)ctrl).Clear();
+
+            ClearControls(ctrl);
+         }
       }
 
       #endregion
