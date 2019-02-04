@@ -38,8 +38,8 @@
          this.label2 = new System.Windows.Forms.Label();
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
          this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.muatSumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.saveSumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.loadFromXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.saveToXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
          this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,12 +94,14 @@
          // 
          // rtBoxData
          // 
-         this.rtBoxData.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.rtBoxData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
          this.tableLayoutPanel1.SetColumnSpan(this.rtBoxData, 2);
          this.rtBoxData.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.rtBoxData.Location = new System.Drawing.Point(3, 205);
+         this.rtBoxData.Location = new System.Drawing.Point(3, 199);
          this.rtBoxData.Name = "rtBoxData";
-         this.rtBoxData.Size = new System.Drawing.Size(347, 200);
+         this.rtBoxData.Size = new System.Drawing.Size(359, 213);
          this.rtBoxData.TabIndex = 2;
          this.rtBoxData.Text = "";
          this.rtBoxData.WordWrap = false;
@@ -107,14 +109,16 @@
          // 
          // rtBoxHasil
          // 
-         this.rtBoxHasil.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.rtBoxHasil.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
          this.tableLayoutPanel3.SetColumnSpan(this.rtBoxHasil, 2);
          this.rtBoxHasil.Cursor = System.Windows.Forms.Cursors.Arrow;
          this.rtBoxHasil.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.rtBoxHasil.Location = new System.Drawing.Point(3, 40);
+         this.rtBoxHasil.Location = new System.Drawing.Point(3, 33);
          this.rtBoxHasil.Name = "rtBoxHasil";
          this.rtBoxHasil.ReadOnly = true;
-         this.rtBoxHasil.Size = new System.Drawing.Size(460, 365);
+         this.rtBoxHasil.Size = new System.Drawing.Size(471, 379);
          this.rtBoxHasil.TabIndex = 5;
          this.rtBoxHasil.TabStop = false;
          this.rtBoxHasil.Text = "";
@@ -159,39 +163,39 @@
          // fileToolStripMenuItem
          // 
          this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.muatSumberToolStripMenuItem,
-            this.saveSumberToolStripMenuItem,
+            this.loadFromXMLToolStripMenuItem,
+            this.saveToXMLToolStripMenuItem,
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
          this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
          this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
          this.fileToolStripMenuItem.Text = "&File";
          // 
-         // muatSumberToolStripMenuItem
+         // loadFromXMLToolStripMenuItem
          // 
-         this.muatSumberToolStripMenuItem.Name = "muatSumberToolStripMenuItem";
-         this.muatSumberToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-         this.muatSumberToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-         this.muatSumberToolStripMenuItem.Text = "&Muat Sumber Data";
-         this.muatSumberToolStripMenuItem.Click += new System.EventHandler(this.muatSumberToolStripMenuItem_Click);
+         this.loadFromXMLToolStripMenuItem.Name = "loadFromXMLToolStripMenuItem";
+         this.loadFromXMLToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+         this.loadFromXMLToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+         this.loadFromXMLToolStripMenuItem.Text = "&Load Data From XML";
+         this.loadFromXMLToolStripMenuItem.Click += new System.EventHandler(this.loadFromXMLToolStripMenuItem_Click);
          // 
-         // saveSumberToolStripMenuItem
+         // saveToXMLToolStripMenuItem
          // 
-         this.saveSumberToolStripMenuItem.Name = "saveSumberToolStripMenuItem";
-         this.saveSumberToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-         this.saveSumberToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-         this.saveSumberToolStripMenuItem.Text = "&Simpan Sumber Data";
-         this.saveSumberToolStripMenuItem.Click += new System.EventHandler(this.saveSumberToolStripMenuItem_Click);
+         this.saveToXMLToolStripMenuItem.Name = "saveToXMLToolStripMenuItem";
+         this.saveToXMLToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+         this.saveToXMLToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+         this.saveToXMLToolStripMenuItem.Text = "&Save Data To XML";
+         this.saveToXMLToolStripMenuItem.Click += new System.EventHandler(this.saveToXMLToolStripMenuItem_Click);
          // 
          // toolStripSeparator1
          // 
          this.toolStripSeparator1.Name = "toolStripSeparator1";
-         this.toolStripSeparator1.Size = new System.Drawing.Size(222, 6);
+         this.toolStripSeparator1.Size = new System.Drawing.Size(225, 6);
          // 
          // exitToolStripMenuItem
          // 
          this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-         this.exitToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+         this.exitToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
          this.exitToolStripMenuItem.Text = "E&xit";
          this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
          // 
@@ -224,6 +228,8 @@
          // 
          // tableLayoutPanel1
          // 
+         this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
          this.tableLayoutPanel1.ColumnCount = 2;
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -309,6 +315,8 @@
          // 
          // tableLayoutPanel2
          // 
+         this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
          this.tableLayoutPanel2.ColumnCount = 5;
          this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
          this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -328,6 +336,9 @@
          // 
          // tableLayoutPanel3
          // 
+         this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
          this.tableLayoutPanel3.ColumnCount = 2;
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
          this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -350,11 +361,11 @@
          this.Controls.Add(this.tableLayoutPanel2);
          this.Controls.Add(this.tableLayoutPanel1);
          this.Controls.Add(this.menuStrip1);
-         this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
          this.KeyPreview = true;
          this.MainMenuStrip = this.menuStrip1;
          this.MaximizeBox = false;
+         this.MinimumSize = new System.Drawing.Size(885, 537);
          this.Name = "FrmMain";
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "Generate Comment Author";
@@ -383,11 +394,11 @@
       private System.Windows.Forms.Label label2;
       private System.Windows.Forms.MenuStrip menuStrip1;
       private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-      private System.Windows.Forms.ToolStripMenuItem saveSumberToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem saveToXMLToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem tentangToolStripMenuItem;
-      private System.Windows.Forms.ToolStripMenuItem muatSumberToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem loadFromXMLToolStripMenuItem;
       private System.Windows.Forms.Button btnCopy;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       private System.Windows.Forms.NumericUpDown nmUpDwnLebar;

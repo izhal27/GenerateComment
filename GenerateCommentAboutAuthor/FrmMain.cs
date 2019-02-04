@@ -1,12 +1,15 @@
-﻿/***************************************
-*                                      *
-*                                      *
-*  Program : Generate Comment Pembuat  *
-*  Pembuat : Risal Walangadi           *
-*  Tahun : 2015                        *
-*                                      *
-*                                      *
-***************************************/
+﻿/*************************************************
+**                                              **
+**               Generate Comment               **
+**            Risal Walangadi ©2015             **
+**                                              **
+**----------------------------------------------**
+**                                              **
+**  File Name : FrmMain.cs                      **
+**  Description :                               **
+**  License :                                   **
+**                                              **
+*************************************************/
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,15 +22,7 @@ namespace GenerateCommentAboutAuthor
 {
    public partial class FrmMain : Form
    {
-
-      #region >> Fields <<
-
-      private string _rawXml = "<header></header><data></data>";
-
-      #endregion
-
-      // ----------------------------------------------------------------------//
-
+      
       #region >> Properties <<
 
       public int Lebar { get { return (int)nmUpDwnLebar.Value; } }
@@ -43,7 +38,7 @@ namespace GenerateCommentAboutAuthor
          InitializeComponent();
          btnGenerate.Enabled = false;
          btnClear.Enabled = false;
-         saveSumberToolStripMenuItem.Enabled = false;
+         saveToXMLToolStripMenuItem.Enabled = false;
       }
 
       #endregion
@@ -80,15 +75,15 @@ namespace GenerateCommentAboutAuthor
 
          btnGenerate.Enabled = status;
          btnClear.Enabled = rtBoxHeader.TextLength != 0 || rtBoxData.TextLength != 0;
-         saveSumberToolStripMenuItem.Enabled = status;
+         saveToXMLToolStripMenuItem.Enabled = status;
       }
 
-      private void muatSumberToolStripMenuItem_Click(object sender, EventArgs e)
+      private void loadFromXMLToolStripMenuItem_Click(object sender, EventArgs e)
       {
          LoadFromXML();
       }
 
-      private void saveSumberToolStripMenuItem_Click(object sender, EventArgs e)
+      private void saveToXMLToolStripMenuItem_Click(object sender, EventArgs e)
       {
          SaveToXML();
       }
@@ -218,11 +213,14 @@ namespace GenerateCommentAboutAuthor
       /// <param name="sb"></param>
       private void AppendHeader(StringBuilder sb)
       {
+         // Cari tinggi baris dari data header, dengan mengabaikan spasi
          var headerLinesLength = rtBoxHeader.Lines.Count(t => !string.IsNullOrWhiteSpace(t));
          var textQueue = new Queue<char>();
 
          for (int i = 0; i < headerLinesLength; i++)
          {
+            // Buat setiap text dalam data header menjadi rata tengah
+            // Lalu masukkan setiap huruf baris dari header ke object textQueue
             foreach (var c in CenterText(rtBoxHeader.Lines[i]))
             {
                textQueue.Enqueue(c);
@@ -232,14 +230,18 @@ namespace GenerateCommentAboutAuthor
             {
                if (c <= 1 || c >= (Lebar - 2))
                {
-                  sb.Append("*");
+                  sb.Append("*"); // 2 Bintang di kiri dan kanan
                }
+               // Cek jika index lebar sekarang 2, untuk membuat gap 2 spasi
+               // dan cek jika masih ada huruf di textQueue
                else if (c >= 2 && textQueue.Any())
                {
+                  // Keluarkan huruf dari textQueue untuk dimasukkan ke StringBuilder object
                   sb.Append(textQueue.Dequeue());
                }
                else
                {
+                  // Spasi kiri dan kanan jika tidak terdapat huruf lagi
                   sb.Append(" ");
                }
             }
@@ -302,7 +304,7 @@ namespace GenerateCommentAboutAuthor
             temp += " ";
          }
 
-         // Tambahkan spasi margin dengan text
+         // Tambahkan spasi margin dengan text yang ada
          temp += str;
 
          return temp;
@@ -345,6 +347,7 @@ namespace GenerateCommentAboutAuthor
                   root.Add(data);
                   // Tambahkan root pada instance xdoc
                   xdoc.Add(root);
+
                   // Simpan sesuai lokasi dan filename yang ditentukan
                   xdoc.Save(saveFileDialog.FileName);
                }
@@ -371,14 +374,18 @@ namespace GenerateCommentAboutAuthor
             try
             {
                XDocument xdoc = XDocument.Load(openFileDialog.FileName);
+               // Ambil data Header dan Data dari file XML
                var listHeader = xdoc.Descendants("Header").Elements().ToList();
                var listData = xdoc.Descendants("Data").Elements().ToList();
 
+               // Pilih hanya value dan masukkan ke rtBoxHeader dan rtBocData
                rtBoxHeader.Lines = listHeader.Select(el => { return el.Value; }).ToArray();
                rtBoxData.Lines = listData.Select(el => { return el.Value; }).ToArray();
 
+               // Hapus hasil yang ada
                rtBoxHasil.Clear();
 
+               // Focus ke btnGenerate
                ActiveControl = btnGenerate;
             }
             catch (Exception ex)
@@ -388,12 +395,20 @@ namespace GenerateCommentAboutAuthor
          }
       }
 
+      /// <summary>
+      /// Hapus text yang ada pada control RichTextBox
+      /// </summary>
+      /// <param name="control">Base control</param>
       private void ClearControls(Control control)
       {
          foreach (Control ctrl in control.Controls)
          {
+            // Jika control sekarang adalah RichTextBox
+            // hapus text yang ada di dalam control
             if (ctrl is RichTextBox) ((RichTextBox)ctrl).Clear();
 
+            // Recrusive function
+            // untuk mengecek jika masih terdapat control di dalam control sekarang
             ClearControls(ctrl);
          }
       }
