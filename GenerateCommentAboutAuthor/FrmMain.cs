@@ -64,11 +64,6 @@ namespace GenerateCommentAboutAuthor
          SetControlFocus(rtBoxHeader);
       }
 
-      private void SetControlFocus(Control control)
-      {
-         ActiveControl = control;
-      }
-
       private void rtBox_TextChanged(object sender, EventArgs e)
       {
          var status = rtBoxHeader.TextLength != 0 && rtBoxData.TextLength != 0;
@@ -411,6 +406,11 @@ namespace GenerateCommentAboutAuthor
             // untuk mengecek jika masih terdapat control di dalam control sekarang
             ClearControls(ctrl);
          }
+      }
+
+      private void SetControlFocus(Control control)
+      {
+         ActiveControl = control;
       }
 
       #endregion
