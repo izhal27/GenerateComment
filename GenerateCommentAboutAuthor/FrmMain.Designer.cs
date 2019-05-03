@@ -1,4 +1,4 @@
-﻿namespace GenerateCommentAboutAuthor
+﻿namespace GenerateComment
 {
    partial class FrmMain
    {
@@ -39,7 +39,10 @@
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
          this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.loadFromXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.saveToXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.closeDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+         this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
          this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +65,7 @@
          // btnGenerate
          // 
          this.btnGenerate.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.btnGenerate.Enabled = false;
          this.btnGenerate.Location = new System.Drawing.Point(3, 3);
          this.btnGenerate.Name = "btnGenerate";
          this.btnGenerate.Size = new System.Drawing.Size(75, 35);
@@ -73,6 +77,7 @@
          // btnClear
          // 
          this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.Left;
+         this.btnClear.Enabled = false;
          this.btnClear.Location = new System.Drawing.Point(84, 3);
          this.btnClear.Name = "btnClear";
          this.btnClear.Size = new System.Drawing.Size(75, 35);
@@ -164,7 +169,10 @@
          // 
          this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadFromXMLToolStripMenuItem,
-            this.saveToXMLToolStripMenuItem,
+            this.closeDataToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
          this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -179,13 +187,37 @@
          this.loadFromXMLToolStripMenuItem.Text = "&Load Data From XML";
          this.loadFromXMLToolStripMenuItem.Click += new System.EventHandler(this.loadFromXMLToolStripMenuItem_Click);
          // 
-         // saveToXMLToolStripMenuItem
+         // closeDataToolStripMenuItem
          // 
-         this.saveToXMLToolStripMenuItem.Name = "saveToXMLToolStripMenuItem";
-         this.saveToXMLToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-         this.saveToXMLToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-         this.saveToXMLToolStripMenuItem.Text = "&Save Data To XML";
-         this.saveToXMLToolStripMenuItem.Click += new System.EventHandler(this.saveToXMLToolStripMenuItem_Click);
+         this.closeDataToolStripMenuItem.Enabled = false;
+         this.closeDataToolStripMenuItem.Name = "closeDataToolStripMenuItem";
+         this.closeDataToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+         this.closeDataToolStripMenuItem.Text = "&Close Data";
+         this.closeDataToolStripMenuItem.Click += new System.EventHandler(this.closeDataToolStripMenuItem_Click);
+         // 
+         // toolStripSeparator2
+         // 
+         this.toolStripSeparator2.Name = "toolStripSeparator2";
+         this.toolStripSeparator2.Size = new System.Drawing.Size(225, 6);
+         // 
+         // saveToolStripMenuItem
+         // 
+         this.saveToolStripMenuItem.Enabled = false;
+         this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+         this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+         this.saveToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+         this.saveToolStripMenuItem.Text = "&Save";
+         this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+         // 
+         // saveAsToolStripMenuItem
+         // 
+         this.saveAsToolStripMenuItem.Enabled = false;
+         this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+         this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+         this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+         this.saveAsToolStripMenuItem.Text = "Save &As";
+         this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
          // 
          // toolStripSeparator1
          // 
@@ -197,7 +229,7 @@
          this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
          this.exitToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
          this.exitToolStripMenuItem.Text = "E&xit";
-         this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+         this.exitToolStripMenuItem.Click += new System.EventHandler(this.btnExit_Click);
          // 
          // helpToolStripMenuItem
          // 
@@ -394,7 +426,7 @@
       private System.Windows.Forms.Label label2;
       private System.Windows.Forms.MenuStrip menuStrip1;
       private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-      private System.Windows.Forms.ToolStripMenuItem saveToXMLToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem tentangToolStripMenuItem;
@@ -408,6 +440,9 @@
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+      private System.Windows.Forms.ToolStripMenuItem closeDataToolStripMenuItem;
+      private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+      private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
    }
 }
 

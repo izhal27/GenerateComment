@@ -1,15 +1,16 @@
-﻿/*************************************************
-**                                              **
-**               Generate Comment               **
-**            Risal Walangadi ©2015             **
-**                                              **
-**----------------------------------------------**
-**                                              **
-**  File Name : FrmMain.cs                      **
-**  Description :                               **
-**  License :                                   **
-**                                              **
-*************************************************/
+﻿/***********************************************************
+**                                                        **
+**                Generate Comment Author                 **
+**                 Risal Walangadi ©2019                  **
+**                                                        **
+**--------------------------------------------------------**
+**                                                        **
+**  File Name : FrmMain.cs                                **
+**  Description : Main form untuk mengenerate data        **
+**  License : GNU GPL v3.0                                **
+**  https://www.gnu.org/licenses/gpl.txt                  **
+**                                                        **
+***********************************************************/
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,11 +19,19 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace GenerateCommentAboutAuthor
+namespace GenerateComment
 {
    public partial class FrmMain : Form
    {
-      
+
+      #region >> Fields <<
+
+      private string _filePathXML;
+
+      #endregion
+
+      // ----------------------------------------------------------------------//
+
       #region >> Properties <<
 
       public int Lebar { get { return (int)nmUpDwnLebar.Value; } }
@@ -36,9 +45,6 @@ namespace GenerateCommentAboutAuthor
       public FrmMain()
       {
          InitializeComponent();
-         btnGenerate.Enabled = false;
-         btnClear.Enabled = false;
-         saveToXMLToolStripMenuItem.Enabled = false;
       }
 
       #endregion
@@ -70,7 +76,7 @@ namespace GenerateCommentAboutAuthor
 
          btnGenerate.Enabled = status;
          btnClear.Enabled = rtBoxHeader.TextLength != 0 || rtBoxData.TextLength != 0;
-         saveToXMLToolStripMenuItem.Enabled = status;
+         saveToolStripMenuItem.Enabled = status;
       }
 
       private void loadFromXMLToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,21 +84,37 @@ namespace GenerateCommentAboutAuthor
          LoadFromXML();
       }
 
-      private void saveToXMLToolStripMenuItem_Click(object sender, EventArgs e)
+      private void closeDataToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         SetFilePath();
+         ClearControls(this);
+      }
+
+      private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         // Jika tidak ada data dimuat, maka buat file baru,
+         // sebaliknya simpan data pada file yang di muat
+         if (!string.IsNullOrWhiteSpace(_filePathXML))
+         {
+            Save(_filePathXML);
+            ((ToolStripMenuItem)sender).Enabled = false;
+         }
+         else
+         {
+            SaveToXML();
+         }
+      }
+
+      private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
       {
          SaveToXML();
       }
 
       private void tentangToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         MessageBox.Show("Generate Comment Author\nBy: Risal Walangadi ©2015 - "
-            + DateTime.Now.Year, "Info", MessageBoxButtons.OK
+         MessageBox.Show("Generate Comment Author\nRisal Walangadi ©2019", "Info"
+            , MessageBoxButtons.OK
             , MessageBoxIcon.Information);
-      }
-
-      private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-         Close();
       }
 
       private void rtBoxHasil_TextChanged(object sender, EventArgs e)
@@ -118,22 +140,29 @@ namespace GenerateCommentAboutAuthor
       #region >> Methods <<
 
       /// <summary>
-      /// Menggenerate teks data sumber
+      /// MMethod untuk mnggenerate data
       /// </summary>
       /// <returns>Mengembalikan data yang sudah digenerate</returns>
       private StringBuilder Generate()
       {
          var sb = new StringBuilder();
 
-         AppendTop(sb);
-         AppendString(" ", sb);
-         AppendHeader(sb);
-         AppendString(" ", sb);
-         AppendString("-", sb); // Garis pembatas
-         AppendString(" ", sb);
-         AppendDataDetail(sb);
-         AppendString(" ", sb);
-         AppendBottom(sb);
+         try
+         {
+            AppendTop(sb);
+            AppendString(" ", sb);
+            AppendHeader(sb);
+            AppendString(" ", sb);
+            AppendString("-", sb); // Garis pembatas
+            AppendString(" ", sb);
+            AppendDataDetail(sb);
+            AppendString(" ", sb);
+            AppendBottom(sb);
+         }
+         catch (Exception ex)
+         {
+            MessageHelper.Error(ex);
+         }
 
          return sb;
       }
@@ -306,68 +335,87 @@ namespace GenerateCommentAboutAuthor
       }
 
       /// <summary>
-      /// Perintah untuk menyimpan data ke file XML
+      /// Method untuk menyimpan data ke file XML
       /// </summary>
       private void SaveToXML()
       {
-         if (!string.IsNullOrEmpty(rtBoxData.Text) && rtBoxData.Text.Trim().Length != 0)
+         try
          {
-            var saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.CurrentDirectory;
-            saveFileDialog.Filter = "XML Files|*.xml";
-
-            try
+            if (!string.IsNullOrEmpty(rtBoxData.Text) && rtBoxData.Text.Trim().Length != 0)
             {
+               var saveFileDialog = new SaveFileDialog();
+               saveFileDialog.InitialDirectory = Environment.CurrentDirectory;
+               saveFileDialog.Filter = "XML Files|*.xml";
+
                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                {
-                  XDocument xdoc = new XDocument();
-                  XElement root = new XElement("Root");
-                  XElement header = new XElement("Header");
-                  XElement data = new XElement("Data");
-
-                  // Ambil setiap line di rtBoxHeader untuk dijadikan element,
-                  // contoh <Line0>Data pada baris pertama</Line0>
-                  List<XElement> listHeader = rtBoxHeader.Lines
-                     .ToList().Select((v, i) => { return new XElement("Line" + i, v); }).ToList();
-                  // Tambahkan pada instance header element
-                  header.Add(listHeader);
-
-                  List<XElement> listData = rtBoxData.Lines
-                     .ToList().Select((v, i) => { return new XElement("Line" + i, v); }).ToList();
-                  // Tambahkan pada instance data element
-                  data.Add(listData);
-
-                  // Tambahkan header dan data pada root element
-                  root.Add(header);
-                  root.Add(data);
-                  // Tambahkan root pada instance xdoc
-                  xdoc.Add(root);
-
-                  // Simpan sesuai lokasi dan filename yang ditentukan
-                  xdoc.Save(saveFileDialog.FileName);
+                  SetFilePath(saveFileDialog.FileName);
+                  Save(saveFileDialog.FileName);
                }
             }
-            catch (Exception ex)
-            {
-               MessageBox.Show(ex.Message);
-            }
+         }
+         catch (Exception ex)
+         {
+            MessageHelper.Error(ex);
          }
       }
 
       /// <summary>
-      /// Perintah untuk memuat data dari file XML
+      /// Method untuk menyimpan data yang dimuat
+      /// </summary>
+      /// <param name="filePath"></param>
+      private void Save(string filePath)
+      {
+         try
+         {
+            var xdoc = new XDocument();
+            var root = new XElement("Root");
+            var header = new XElement("Header");
+            var data = new XElement("Data");
+
+            // Ambil setiap line di rtBoxHeader untuk dijadikan element,
+            // contoh <Line0>Data pada baris pertama</Line0>
+            List<XElement> listHeader = rtBoxHeader.Lines
+               .ToList().Select((v, i) => { return new XElement("Line" + i, v); }).ToList();
+            // Tambahkan pada instance header element
+            header.Add(listHeader);
+
+            List<XElement> listData = rtBoxData.Lines
+               .ToList().Select((v, i) => { return new XElement("Line" + i, v); }).ToList();
+            // Tambahkan pada instance data element
+            data.Add(listData);
+
+            // Tambahkan header dan data pada root element
+            root.Add(header);
+            root.Add(data);
+            // Tambahkan root pada instance xdoc
+            xdoc.Add(root);
+
+            // Simpan sesuai lokasi dan filename yang ditentukan
+            xdoc.Save(filePath);
+         }
+         catch (Exception ex)
+         {
+            MessageHelper.Error(ex);
+         }
+      }
+
+      /// <summary>
+      /// Method untuk memuat data dari file XML
       /// </summary>
       private void LoadFromXML()
       {
-         var openFileDialog = new OpenFileDialog();
-         openFileDialog.InitialDirectory = Environment.CurrentDirectory;
-         openFileDialog.Filter = "XML Files|*.xml";
-         openFileDialog.FileName = "";
-
-         if (openFileDialog.ShowDialog() == DialogResult.OK)
+         try
          {
-            try
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = Environment.CurrentDirectory;
+            openFileDialog.Filter = "XML Files|*.xml";
+            openFileDialog.FileName = "";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+               SetFilePath(openFileDialog.FileName);
+
                XDocument xdoc = XDocument.Load(openFileDialog.FileName);
                // Ambil data Header dan Data dari file XML
                var listHeader = xdoc.Descendants("Header").Elements().ToList();
@@ -383,11 +431,26 @@ namespace GenerateCommentAboutAuthor
                // Focus ke btnGenerate
                ActiveControl = btnGenerate;
             }
-            catch (Exception ex)
-            {
-               MessageBox.Show(ex.Message);
-            }
          }
+         catch (Exception ex)
+         {
+            MessageHelper.Error(ex);
+         }
+      }
+
+      /// <summary>
+      /// Method yang digunakan untuk mengatur path file yang dimuat
+      /// </summary>
+      /// <param name="filePath">Path file</param>
+      private void SetFilePath(string filePath = default(string))
+      {
+         var defaultText = "Generate Comment Author";
+
+         _filePathXML = !string.IsNullOrWhiteSpace(filePath) ? filePath : default(string);
+         Text = !string.IsNullOrWhiteSpace(filePath) ? (defaultText + " - " + Path.GetFileName(_filePathXML)) : defaultText;
+
+         closeDataToolStripMenuItem.Enabled = !string.IsNullOrWhiteSpace(filePath);
+         saveAsToolStripMenuItem.Enabled = !string.IsNullOrWhiteSpace(filePath);
       }
 
       /// <summary>
@@ -408,6 +471,10 @@ namespace GenerateCommentAboutAuthor
          }
       }
 
+      /// <summary>
+      /// Method yang digunakan untuk mengatur focus sebuah control
+      /// </summary>
+      /// <param name="control">Control target</param>
       private void SetControlFocus(Control control)
       {
          ActiveControl = control;
